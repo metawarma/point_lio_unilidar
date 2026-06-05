@@ -1,0 +1,11 @@
+<launch>
+	<!-- Record UniLiDAR raw data only. This launch does not start Point-LIO mapping. -->
+
+	<arg name="bag_dir" default="$(find point_lio_unilidar)/bag" />
+	<arg name="bag_prefix" default="unilidar_raw" />
+	<arg name="lid_topic" default="/unilidar/cloud" />
+	<arg name="imu_topic" default="/unilidar/imu" />
+
+	<node pkg="rosbag" type="record" name="record_unilidar_raw" output="screen"
+		args="-O $(arg bag_dir)/$(arg bag_prefix) $(arg lid_topic) $(arg imu_topic)" />
+</launch>
